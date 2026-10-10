@@ -56,7 +56,7 @@ Schalter bleibt die Systemvariable `urlaub modus ein` (Favorit, @Home-App, virtu
 - [x] `alte_programme_loeschen.hms` (Probelauf, dann `loeschen = true`) – löscht Urlaub gerate, SYS Bestätigen, SYS war gestört
 - [x] In „urlaub ein“ und „urlaub aus“ die Aktion im SONST-Zweig löschen
 - [x] Ein Programm **Urlaubsmodus**: WENN `urlaub modus ein` bei **an** *bei Änderung auslösen* ODER Zeitsteuerung Zeitintervall 1 Std *bei Zeitsteuerung auslösen*; DANN **und** SONST: Skript `urlaubsmodus.hms`
-- [ ] Test: Urlaub an → Heizkörperthermostate „Manu“ 16 °C; Urlaub aus → „Auto“
+- [x] Test: Urlaub an → Heizkörperthermostate „Manu“ 16 °C; Urlaub aus → „Auto“ (10.10.2026, bestanden)
 
 Das Skript entscheidet selbst anhand der Systemvariable. Wandthermostate (HM-CC-TC) bekommen im Urlaub stündlich 16 °C
 (manuell gesetzte Werte gelten bei ihnen nur bis zum nächsten Schaltzeitpunkt) und folgen danach wieder dem Wochenprogramm.
