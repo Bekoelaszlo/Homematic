@@ -13,8 +13,9 @@ Kanäle der Thermostate mit Zusatz (`Temperatur`, `Regler`, `Fensterempfang`, �
 Damit sind auch erledigt: Tippfehler `Washraum 1.3`, doppeltes Leerzeichen `Waschraum  3.2`, Kanäle mit Werksnamen.
 
 - [ ] Prüfen, ob Programme **HM-Skripte** enthalten, die Geräte über den Namen ansprechen (`dom.GetObject("…")`) – die würden nach dem Umbenennen nicht mehr funktionieren. Programme mit normalen Bedingungen/Aktionen sind nicht betroffen (Verknüpfung über ID).
-- [ ] Probelauf (`aendern = false`), Ausgabe prüfen
-- [ ] Echtlauf (`aendern = true`)
+- [x] Probelauf (`aendern = false`), Ausgabe prüfen – 172/172 gefunden
+- [x] Echtlauf (`aendern = true`) – „Umbenannt: 172“ (10.10.2026)
+- [ ] Kontrolle mit `skripte/export_kanaele.hms`
 
 Nicht umbenannt: Systemgeräte und virtuelle Tasten (`urlaub:ein`, `urlaub:aus`) – evtl. von der myHome-App oder Programmen per Name genutzt.
 
