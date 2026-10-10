@@ -23,14 +23,9 @@ Nicht umbenannt: Systemgeräte und virtuelle Tasten (`urlaub:ein`, `urlaub:aus`)
 - [ ] Fernbedienungs-Tasten 11/12 unbelegt (ok)
 - [ ] Raum „URLAUB“ → besser Gewerk „Szenen/Zentrale“, Raum löschen (optional)
 
-## 3. Heizung: alte Wandthermostate ohne Ventil (vor Ort prüfen)
-| Raum | HM-CC-TC | Ventil | HM-CC-RT-DN |
-|---|---|---|---|
-| Zimmer 3 | JEQ0235880 | – | OEQ1257212 |
-| Zimmer 5 | JEQ0457714 | – | LEQ1287076 |
-| Zimmer 7 | JEQ0044237 | – | REQ0381224 |
-
-HM-CC-TC steuert nur HM-CC-VD; ohne Ventil regelt er nichts. Wenn er nicht mehr gebraucht wird: ablernen (Batterien raus, in der CCU löschen).
+## 3. Heizung: alte Wandthermostate ohne Ventil ✅ geklärt
+Zimmer 3 (JEQ0235880), Zimmer 5 (JEQ0457714), Zimmer 7 (JEQ0044237): HM-CC-TC ohne Ventil, geregelt wird per HM-CC-RT-DN.
+**Bleiben** – werden als Raumtemperaturfühler genutzt.
 
 ## 4. Programme (Inhalt prüfen – braucht .sbk oder Screenshots)
 - [ ] `SYS Bestätigen` – deaktiviert, nie gelaufen → löschen?
