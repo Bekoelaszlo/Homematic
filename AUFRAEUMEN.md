@@ -54,9 +54,9 @@ Schalter bleibt die Systemvariable `urlaub modus ein` (Favorit, @Home-App, virtu
 - [ ] `urlaub_test.hms` in „Skript testen“ → „Fehlend: 0“
 - [ ] Programm **Urlaubsmodus**: WENN `urlaub modus ein` bei **an** – *bei Änderung auslösen*; DANN Skript `urlaub_an.hms`; SONST Skript `urlaub_aus.hms`
 - [ ] Programm **Urlaub halten**: WENN `urlaub modus ein` bei **an** – *nur prüfen* UND Zeitsteuerung Zeitintervall alle 1 Std – *bei Zeitsteuerung auslösen*; DANN Skript `urlaub_halten.hms`
-- [ ] Test: Urlaub an → Heizkörperthermostate zeigen „Manu“ 19 °C; Urlaub aus → wieder „Auto“
+- [ ] Test: Urlaub an → Heizkörperthermostate zeigen „Manu“ 16 °C; Urlaub aus → wieder „Auto“
 
-Wandthermostate (HM-CC-TC) mit Ventil bekommen 19 °C als Solltemperatur und kehren nach dem Urlaub beim nächsten
+Wandthermostate (HM-CC-TC) mit Ventil bekommen 16 °C als Solltemperatur und kehren nach dem Urlaub beim nächsten
 Schaltzeitpunkt zu ihrem Wochenprogramm zurück. Heizkörperthermostate (HM-CC-RT-DN) gehen in den manuellen Betrieb
 und per „Urlaub aus“ zurück in den Automatikbetrieb. Wandthermostate ohne Ventil (Zimmer 3, 5, 7) werden nicht geschaltet.
 
