@@ -44,7 +44,7 @@ die Raumtemperatur an den HM-CC-RT-DN; Fensterkontakt → RT-DN:3 überall vorha
 |---|---|
 | service | behalten |
 | SYS Bestätigen, SYS war gestört | [ ] löschen (deaktivierte Hilfsskripte) |
-| @HomeNotificationSender (unsichtbar, alte API) | [ ] löschen – Duplikat von V2 (Programm unsichtbar → per Skript, siehe unten) |
+| @HomeNotificationSender (unsichtbar, alte API) | ✅ gelöscht (10.10.2026) |
 | @HomeNotificationSenderV2 | behalten (@Home-App wird genutzt) |
 | urlaub ein / urlaub aus | [ ] Aktion im SONST-Zweig löschen (sonst kann der Urlaubsmodus nach CCU-Neustart „an“ gehen) |
 | Urlaub gerate | [ ] löschen, ersetzt durch neuen Urlaubsmodus |
