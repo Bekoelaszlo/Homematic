@@ -1,0 +1,77 @@
+
+######## PROGRAM service 10004 enabled 1 type 7
+  RULE 10005 op=2
+    COND op=2
+      SC t1=8 t2=4 op=1 L='41'(t19) -> Servicemeldungen [dp#41] R1='0'(t16) R2='0'(t16) neg=0
+    DEST Systemfall [dp#10690] val='1'(t2) param=19 vp=''(t0)
+    ELSE/SONST:
+      RULE 10728 op=2
+        DEST Systemfall [dp#10690] val='0'(t2) param=19 vp=''(t0)
+
+######## PROGRAM SYS Bestätigen 12738 enabled 1 type 7
+  RULE 12739 op=2
+    COND op=2
+      SC t1=8 t2=13 op=1 L='41'(t19) -> Servicemeldungen [dp#41] R1='0'(t16) R2='0'(t16) neg=0
+    DEST #65535 val='string itemID;\nstring address;\nobject aldp_obj;\n\nforeach(itemID, dom.GetObject(ID_DEVICES).EnumUsedIDs()) {\n   address = dom.GetObject(itemID).Address();\n   aldp_obj = dom.GetObject("AL-" # address # ":0.STICKY_UNREACH");\n   if (aldp_obj) {\n     if (aldp_obj.Value()) {\n       aldp_obj.AlReceipt();\n     }\n   }\n}\n'(t20) param=20 vp='00:00:10'(t28)
+
+######## PROGRAM SYS war gestört 12763 enabled 1 type 7
+  RULE 12764 op=2
+    COND op=2
+      SC t1=8 t2=13 op=1 L='41'(t19) -> Servicemeldungen [dp#41] R1='0'(t16) R2='0'(t16) neg=0
+    DEST #65535 val='string itemID;\nstring address;\nobject aldp_obj;\nstring channel;\nvar x;\n\nforeach(itemID, dom.GetObject(ID_DEVICES).EnumUsedIDs()) {\n   address = dom.GetObject(itemID).Address();\n   aldp_obj = dom.GetObject("AL-" # address # ":0.UNREACH");\n   if (aldp_obj) {\n     if (aldp_obj.Value()) {\n       foreach (channel, dom.GetObject(itemID).Channels().EnumUsedIDs()) {\n         x = dom.GetObject(channel).State();\n       }\n     }\n   }\n}'(t20) param=20 vp='00:05:00'(t28)
+
+######## PROGRAM @HomeNotificationSender 15889 enabled 1 type 7
+  RULE 15890 op=2
+    COND op=2
+      SC t1=1 t2=13 op=1 L='15888'(t19) -> @HomeNotification [dp#15888] R1='-'(t20) R2=''(t20) neg=0
+    ELSE/SONST:
+      RULE 15897 op=2
+        DEST #65535 val='string group = "***";\nstring token = "***";\nstring message = dom.GetObject("@HomeNotification").State();\nstring stderr;\nstring stdout;\nsystem.Exec("wget \'https://monitor.athomeapp.de/apps/push?token="#token#"&group="#group#"&message="#message#"\' --no-check-certificate -q -O /dev/null", &stdout, &stderr);'(t20) param=20 vp=''(t0)
+
+######## PROGRAM Urlaub gerate 16542 enabled 1 type 7
+  RULE 16543 op=2
+    COND op=2
+      SC t1=1 t2=4 op=1 L='16524'(t19) -> urlaub modus ein [dp#16524] R1='1'(t2) R2='0'(t2) neg=0
+    DEST Bad Gäste Wandthermostat Regler / SETPOINT [dp#6097] val='19.000000'(t4) param=18 vp=''(t0)
+    DEST Flur Wandthermostat Regler / SETPOINT [dp#8399] val='19.000000'(t4) param=18 vp=''(t0)
+    DEST Girls Bad Wandthermostat Regler / SETPOINT [dp#14799] val='19.000000'(t4) param=18 vp=''(t0)
+    DEST Reci Wandthermostat Regler / SETPOINT [dp#14902] val='19.000000'(t4) param=18 vp=''(t0)
+    DEST Küche Heizkörperthermostat Regler / SET_TEMPERATURE [dp#16298] val='19.000000'(t4) param=18 vp=''(t0)
+    DEST Waschraum Wandthermostat Regler / SETPOINT [dp#14565] val='19.000000'(t4) param=18 vp=''(t0)
+    DEST Zimmer 1 Wandthermostat Regler / SETPOINT [dp#1615] val='19.000000'(t4) param=18 vp=''(t0)
+    DEST Zimmer 2 Wandthermostat Regler / SETPOINT [dp#1894] val='19.000000'(t4) param=18 vp=''(t0)
+    DEST Zimmer 3 Wandthermostat Regler / SETPOINT [dp#1835] val='19.000000'(t4) param=18 vp=''(t0)
+    DEST Zimmer 4 Wandthermostat Regler / SETPOINT [dp#2277] val='19.000000'(t4) param=18 vp=''(t0)
+    DEST Zimmer 5 Heizkörperthermostat Regler / SET_TEMPERATURE [dp#12403] val='19.000000'(t4) param=18 vp=''(t0)
+    DEST Zimmer 6 Wandthermostat Regler / SETPOINT [dp#1769] val='19.000000'(t4) param=18 vp=''(t0)
+    DEST Zimmer 7 Wandthermostat Regler / SETPOINT [dp#3087] val='19.000000'(t4) param=18 vp=''(t0)
+    DEST Zimmer 8 Wandthermostat Regler / SETPOINT [dp#4732] val='19.000000'(t4) param=18 vp=''(t0)
+    DEST Solarium Wandthermostat Regler / SETPOINT [dp#14828] val='19.000000'(t4) param=18 vp=''(t0)
+    ELSE/SONST:
+      RULE 17363 op=2
+
+######## PROGRAM urlaub ein 16877 enabled 1 type 7
+  RULE 16878 op=2
+    COND op=2
+      SC t1=1 t2=1 op=1 L='1017'(t18) -> urlaub:ein / PRESS_SHORT [dp#1017] R1='1'(t2) R2='0'(t2) neg=0
+    DEST urlaub modus ein [dp#16524] val='1'(t2) param=19 vp=''(t0)
+    ELSE/SONST:
+      RULE 17105 op=2
+        DEST urlaub modus ein [dp#16524] val='0'(t2) param=19 vp=''(t0)
+
+######## PROGRAM urlaub aus 17108 enabled 1 type 7
+  RULE 17109 op=2
+    COND op=2
+      SC t1=1 t2=1 op=1 L='1016'(t18) -> urlaub:ein / PRESS_LONG [dp#1016] R1='1'(t2) R2='0'(t2) neg=0
+    DEST urlaub modus ein [dp#16524] val='0'(t2) param=19 vp=''(t0)
+    ELSE/SONST:
+      RULE 17139 op=2
+        DEST urlaub modus ein [dp#16524] val='1'(t2) param=19 vp=''(t0)
+
+######## PROGRAM @HomeNotificationSenderV2 17767 enabled 1 type 7
+  RULE 17768 op=2
+    COND op=2
+      SC t1=1 t2=13 op=1 L='15888'(t19) -> @HomeNotification [dp#15888] R1='-'(t20) R2=''(t20) neg=0
+    ELSE/SONST:
+      RULE 17775 op=2
+        DEST #65535 val='string group = "***";\nstring token = "***";\nstring message = dom.GetObject("@HomeNotification").State().ToUTF8();\nstring stderr;\nstring stdout;\nsystem.Exec("wget \'https://monitor.athomeapp.de/apps/push-v3?token="#token#"&group="#group#"&message="#message#"\' --timeout=10 --no-check-certificate -q -O /dev/null", &stdout, &stderr);'(t20) param=20 vp=''(t0)

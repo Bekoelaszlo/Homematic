@@ -39,16 +39,35 @@ die Raumtemperatur an den HM-CC-RT-DN; Fensterkontakt → RT-DN:3 überall vorha
 
 - [ ] Optional: Verknüpfungsnamen nach dem Umbenennen anpassen (z. B. „Zimmer 3 2 mit HM-CC-RT-DN OEQ1257212:1“)
 
-## 4. Programme (Inhalt prüfen – braucht .sbk oder Screenshots)
-- [ ] `SYS Bestätigen` – deaktiviert, nie gelaufen → löschen?
-- [ ] `SYS war gestört` – deaktiviert, nie gelaufen → löschen?
-- [ ] `urlaub ein` / `urlaub aus` – laufen beide beim CCU-Start → Auslöser „bei Aktualisierung“ → „bei Änderung“?
+## 4. Programme (ausgewertet aus Backup, Details: `bestand/programme_2026-10-10.txt`)
+| Programm | Was es tut | Empfehlung |
+|---|---|---|
+| service | Servicemeldungen > 0 → `Systemfall` = true, sonst false | behalten |
+| SYS Bestätigen | Skript: bestätigt STICKY_UNREACH automatisch (deaktiviert) | [ ] löschen |
+| SYS war gestört | Skript: fragt nicht erreichbare Geräte erneut ab (deaktiviert) | [ ] löschen |
+| urlaub ein | virt. Taste 1 kurz → `urlaub modus ein` = an; **SONST → aus** | [ ] SONST-Zweig entfernen |
+| urlaub aus | virt. Taste 1 **lang** → `urlaub modus ein` = aus; **SONST → an** | [ ] SONST-Zweig entfernen |
+| Urlaub gerate | `urlaub modus ein` = an → alle Regler 19 °C | [ ] Heizkörperthermostate Zimmer 3, 4, 7 ergänzen |
+| @HomeNotificationSender (unsichtbar) | Push über @Home-App, alte API | [ ] löschen (Duplikat von V2) |
+| @HomeNotificationSenderV2 (unsichtbar) | Push über @Home-App, API v3 | behalten, falls @Home-App genutzt |
 
-## 5. Systemvariablen (erst nach Prüfung der Programme löschen)
-- [ ] `Systemvariable` (0.0) – vermutlich Test
-- [ ] `Systemvariable 1` (Wert `???`) – kaputte Werteliste
-- [ ] `myHomeLastPushMessage 1` – Duplikat, nie beschrieben
-- [ ] `Heizungsautomati` – genutzt? Name abgeschnitten
-- [ ] `schloss` – wofür?
-- [ ] `Alarmzone 1`, `Anwesenheit` – CCU-Standard, nur behalten wenn genutzt
-- [ ] `@HomeNotification`, `myHomeToken`, `myHomeLastPushMessage` – nur bei Nutzung der myHome/HomeControl-App behalten
+Problem SONST-Zweige: Beim CCU-Start werden beide Programme geprüft, beide Bedingungen sind falsch →
+„urlaub ein“ setzt aus, „urlaub aus“ setzt an. Je nach Reihenfolge steht der Urlaubsmodus nach einem Neustart auf **an**.
+
+Problem Urlaub gerate: In Zimmer 3, 4, 7 regelt der Heizkörperthermostat mit eigenem Sollwert, das Programm setzt dort aber nur den Wandthermostat.
+Außerdem kein Zurücksetzen nach dem Urlaub (im Automatikbetrieb gilt der gesetzte Wert nur bis zum nächsten Schaltzeitpunkt).
+
+## 5. Systemvariablen (Nutzung geprüft)
+Skript: [`skripte/systemvariablen_loeschen.hms`](skripte/systemvariablen_loeschen.hms) (mit Probelauf)
+- [ ] `Systemvariable` – nirgends genutzt → löschen
+- [ ] `Systemvariable 1` (Text „???“) – nirgends genutzt → löschen
+- [ ] `Heizungsautomati` – nirgends genutzt → löschen
+- [ ] `schloss` – an einen Kanal gebunden, den es nicht mehr gibt → löschen
+- [ ] `svEnergyCounter_11479_CUX3700001:2`, `svEnergyCounterOldVal_11479` – unsichtbare Reste eines gelöschten Energiezählers → löschen
+- [ ] `myHomeToken`, `myHomeLastPushMessage`, `myHomeLastPushMessage 1` (Alarmvariable) – HomeControl/myHome-App; nur behalten, wenn genutzt
+- [ ] `@HomeNotification` – @Home-App; nur behalten, wenn genutzt
+- [ ] `Alarmzone 1`, `Anwesenheit` – CCU-Standard, nirgends genutzt; optional löschen
+- behalten: `urlaub modus ein`, `Systemfall`; `-ActiveState`-Variablen gehören intern zu den Programmen
+
+## 6. Firmware
+- [ ] CCU2 läuft mit 2.41.5 (2018). Auf die letzte CCU2-Firmware aktualisieren (Sicherheitsupdates) – vorher Backup.

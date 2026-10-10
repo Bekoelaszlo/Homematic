@@ -1,0 +1,26 @@
+! Nicht genutzte / verwaiste Systemvariablen loeschen (geprueft anhand Backup vom 10.10.2026)
+! Erst mit loeschen = false laufen lassen: jede Zeile muss "OK" zeigen.
+! Nur wenn alle Zeilen OK sind, loeschen = true setzen und erneut ausfuehren.
+boolean loeschen = false;
+string liste = "9139=Systemvariable\t11535=Systemvariable 1\t16541=Heizungsautomati\t11187=schloss\t11504=svEnergyCounter_11479_CUX3700001:2\t11505=svEnergyCounterOldVal_11479";
+string e; string soll; integer id; object o; integer z = 0;
+foreach(e, liste) {
+  id = e.StrValueByIndex("=", 0).ToInteger();
+  soll = e.StrValueByIndex("=", 1);
+  o = dom.GetObject(id);
+  if (o) {
+    if (o.Name() == soll) {
+      WriteLine("OK     " # id # " " # soll);
+      if (loeschen) {
+        dom.GetObject(ID_SYSTEM_VARIABLES).Remove(id);
+        dom.DeleteObject(id);
+        z = z + 1;
+      }
+    } else {
+      WriteLine("ANDERS " # id # " heisst '" # o.Name() # "' statt '" # soll # "' - wird NICHT geloescht");
+    }
+  } else {
+    WriteLine("FEHLT  " # id # " " # soll);
+  }
+}
+if (loeschen) { WriteLine("Geloescht: " # z); } else { WriteLine("PROBELAUF - nichts geloescht"); }
