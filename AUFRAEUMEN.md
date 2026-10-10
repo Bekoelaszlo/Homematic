@@ -43,17 +43,17 @@ die Raumtemperatur an den HM-CC-RT-DN; Fensterkontakt → RT-DN:3 überall vorha
 | Programm | Aktion |
 |---|---|
 | service | behalten |
-| SYS Bestätigen, SYS war gestört | [ ] löschen (deaktivierte Hilfsskripte) |
+| SYS Bestätigen, SYS war gestört | ✅ gelöscht |
 | @HomeNotificationSender (unsichtbar, alte API) | ✅ gelöscht (10.10.2026) |
 | @HomeNotificationSenderV2 | behalten (@Home-App wird genutzt) |
 | urlaub ein / urlaub aus | [ ] Aktion im SONST-Zweig löschen (sonst kann der Urlaubsmodus nach CCU-Neustart „an“ gehen) |
-| Urlaub gerate | [ ] löschen, ersetzt durch neuen Urlaubsmodus |
+| Urlaub gerate | ✅ gelöscht, ersetzt durch neuen Urlaubsmodus |
 
 ### Neuer Urlaubsmodus (`skripte/urlaub/`)
 Schalter bleibt die Systemvariable `urlaub modus ein` (Favorit, @Home-App, virtuelle Taste 1). Alle Räume → 16 °C.
 - [x] `urlaub_test.hms` → „Fehlend: 0“
 - `urlaub_anzeige.hms` zeigt jederzeit den Zustand (schaltet nichts)
-- [ ] `alte_programme_loeschen.hms` (Probelauf, dann `loeschen = true`) – löscht Urlaub gerate, SYS Bestätigen, SYS war gestört
+- [x] `alte_programme_loeschen.hms` (Probelauf, dann `loeschen = true`) – löscht Urlaub gerate, SYS Bestätigen, SYS war gestört
 - [ ] In „urlaub ein“ und „urlaub aus“ die Aktion im SONST-Zweig löschen
 - [ ] Ein Programm **Urlaubsmodus**: WENN `urlaub modus ein` bei **an** *bei Änderung auslösen* ODER Zeitsteuerung Zeitintervall 1 Std *bei Zeitsteuerung auslösen*; DANN **und** SONST: Skript `urlaubsmodus.hms`
 - [ ] Test: Urlaub an → Heizkörperthermostate „Manu“ 16 °C; Urlaub aus → „Auto“
