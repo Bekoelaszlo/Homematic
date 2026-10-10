@@ -23,18 +23,19 @@ Nicht umbenannt: Systemgeräte und virtuelle Tasten (`urlaub:ein`, `urlaub:aus`)
 - [ ] Fernbedienungs-Tasten 11/12 unbelegt (ok)
 - [ ] Raum „URLAUB“ → besser Gewerk „Szenen/Zentrale“, Raum löschen (optional)
 
-## 3. Heizung: Wandthermostat + Heizkörperthermostat ✅ geklärt
-Zimmer 3 (JEQ0235880), Zimmer 5 (JEQ0457714), Zimmer 7 (JEQ0044237): HM-CC-TC ohne Ventil.
-Der HM-CC-TC liefert per Direktverknüpfung „Wettersensor → Heizungsthermostat (Empfänger Wetterdaten)“
-(TC Kanal 1 → RT-DN Kanal 1) die Raumtemperatur an den HM-CC-RT-DN, der danach regelt. **Bleibt so.**
-Fehlende Verknüpfungen (Profil „Standardverknüpfung Wettersensor – Heizungsthermostat“) anlegen:
-- [x] Zimmer 3: JEQ0235880:1 → OEQ1257212:1 vorhanden
-- [ ] Zimmer 5: JEQ0457714:1 → LEQ1287076:1
-- [x] Zimmer 4: vorhanden (TC:1 → RT-DN:1, TC:2 → Ventil, Fensterkontakt → TC:3 und RT-DN:3). Sollwert/Zeiten an TC und RT-DN gleich halten.
-- [x] Zimmer 7: Fensterkontakt MEQ1831605:1 → REQ0381224:3 vorhanden
-- [ ] Zimmer 3: Fensterkontakt OEQ2246622:1 → OEQ1257212:3 vorhanden?
-- [ ] Zimmer 5: Fensterkontakt NEQ1156915:1 → LEQ1287076:3 vorhanden?
-- [ ] Danach Servicemeldungen prüfen (Konfigurationsdaten übertragen)
+## 3. Heizung: Wandthermostat + Heizkörperthermostat ✅ erledigt
+Zimmer 3, 4, 5, 7: HM-CC-TC liefert per Direktverknüpfung „Wettersensor → Heizungsthermostat“ (TC:1 → RT-DN:1)
+die Raumtemperatur an den HM-CC-RT-DN; Fensterkontakt → RT-DN:3 überall vorhanden. In Zimmer 4 regelt der TC zusätzlich das Ventil
+(Sollwert/Zeiten an TC und RT-DN gleich halten).
+
+| Raum | Temperatur TC → RT-DN | Fenster → RT-DN |
+|---|---|---|
+| Zimmer 3 | JEQ0235880:1 → OEQ1257212:1 ✅ | OEQ2246622:1 → OEQ1257212:3 ✅ |
+| Zimmer 4 | JEQ0121520:1 → REQ0381230:1 ✅ | OEQ2245291:1 → REQ0381230:3 ✅ |
+| Zimmer 5 | JEQ0457714:1 → LEQ1287076:1 ✅ | NEQ1156915:1 → LEQ1287076:3 ✅ |
+| Zimmer 7 | JEQ0044237:1 → REQ0381224:1 ✅ | MEQ1831605:1 → REQ0381224:3 ✅ |
+
+- [ ] Optional: Verknüpfungsnamen nach dem Umbenennen anpassen (z. B. „Zimmer 3 2 mit HM-CC-RT-DN OEQ1257212:1“)
 
 ## 4. Programme (Inhalt prüfen – braucht .sbk oder Screenshots)
 - [ ] `SYS Bestätigen` – deaktiviert, nie gelaufen → löschen?
