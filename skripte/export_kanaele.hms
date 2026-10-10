@@ -1,0 +1,14 @@
+! Alle Kanaele mit Adresse, Typ, Name und Raum (ohne virtuelle Tasten)
+string id; string cid; string rid; object d; object ch; string s;
+WriteLine("=== KANAELE: Geraet;Kanaladresse;Kanaltyp;Kanalname;Raeume ===");
+foreach(id, dom.GetObject(ID_DEVICES).EnumUsedIDs()) {
+  d = dom.GetObject(id);
+  if (d.Interface() && (dom.GetObject(d.Interface()).Name() == "BidCos-RF") && (d.HssType() != "HM-RCV-50")) {
+    foreach(cid, d.Channels().EnumUsedIDs()) {
+      ch = dom.GetObject(cid);
+      s = d.Name() # ";" # ch.Address() # ";" # ch.HssType() # ";" # ch.Name() # ";";
+      foreach(rid, ch.ChnRoom()) { s = s # dom.GetObject(rid).Name() # " "; }
+      WriteLine(s);
+    }
+  }
+}

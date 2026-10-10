@@ -1,0 +1,25 @@
+! Status aller Funkgeraete: Batterie, Erreichbarkeit, Konfiguration + Raumzuordnung
+string id; string cid; object d; object ifo; object dp; string a; string s;
+WriteLine("=== STATUS: Name;LOWBAT;UNREACH;STICKY_UNREACH;CONFIG_PENDING ===");
+foreach(id, dom.GetObject(ID_DEVICES).EnumUsedIDs()) {
+  d = dom.GetObject(id);
+  ifo = dom.GetObject(d.Interface());
+  if (ifo) {
+    if (ifo.Name() == "BidCos-RF") {
+      a = "BidCos-RF." # d.Address() # ":0.";
+      s = d.Name();
+      dp = dom.GetObject(a # "LOWBAT"); if (dp) { s = s # ";" # dp.Value(); } else { s = s # ";-"; }
+      dp = dom.GetObject(a # "UNREACH"); if (dp) { s = s # ";" # dp.Value(); } else { s = s # ";-"; }
+      dp = dom.GetObject(a # "STICKY_UNREACH"); if (dp) { s = s # ";" # dp.Value(); } else { s = s # ";-"; }
+      dp = dom.GetObject(a # "CONFIG_PENDING"); if (dp) { s = s # ";" # dp.Value(); } else { s = s # ";-"; }
+      WriteLine(s);
+    }
+  }
+}
+WriteLine("=== RAEUME: Raum: Kanaele ===");
+foreach(id, dom.GetObject(ID_ROOMS).EnumUsedIDs()) {
+  d = dom.GetObject(id);
+  s = d.Name() # ":";
+  foreach(cid, d.EnumUsedIDs()) { s = s # " " # dom.GetObject(cid).Name() # ","; }
+  WriteLine(s);
+}
