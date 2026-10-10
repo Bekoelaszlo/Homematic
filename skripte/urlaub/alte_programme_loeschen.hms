@@ -1,0 +1,17 @@
+! Loescht die alten Programme "Urlaub gerate", "SYS Bestaetigen" und "SYS war gestoert".
+! Erst mit loeschen = false laufen lassen: jede Zeile muss "OK" zeigen.
+boolean loeschen = false;
+string liste = "16542=Urlaub gerate\t12738=SYS Bestätigen\t12763=SYS war gestört";
+string e; string soll; integer id; object o; integer z = 0;
+foreach(e, liste) {
+  id = e.StrValueByIndex("=", 0).ToInteger();
+  soll = e.StrValueByIndex("=", 1);
+  o = dom.GetObject(id);
+  if (o) {
+    if (o.Name() == soll) {
+      WriteLine("OK     " # id # " " # soll);
+      if (loeschen) { dom.GetObject(ID_PROGRAMS).Remove(id); dom.DeleteObject(id); z = z + 1; }
+    } else { WriteLine("ANDERS " # id # " heisst '" # o.Name() # "' - wird NICHT geloescht"); }
+  } else { WriteLine("FEHLT  " # id # " " # soll); }
+}
+if (loeschen) { WriteLine("Geloescht: " # z); } else { WriteLine("PROBELAUF - nichts geloescht"); }

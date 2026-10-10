@@ -50,15 +50,16 @@ die Raumtemperatur an den HM-CC-RT-DN; Fensterkontakt → RT-DN:3 überall vorha
 | Urlaub gerate | [ ] löschen, ersetzt durch neuen Urlaubsmodus |
 
 ### Neuer Urlaubsmodus (`skripte/urlaub/`)
-Schalter bleibt die Systemvariable `urlaub modus ein` (Favorit, @Home-App, virtuelle Taste 1).
-- [ ] `urlaub_test.hms` in „Skript testen“ → „Fehlend: 0“
-- [ ] Programm **Urlaubsmodus**: WENN `urlaub modus ein` bei **an** – *bei Änderung auslösen*; DANN Skript `urlaub_an.hms`; SONST Skript `urlaub_aus.hms`
-- [ ] Programm **Urlaub halten**: WENN `urlaub modus ein` bei **an** – *nur prüfen* UND Zeitsteuerung Zeitintervall alle 1 Std – *bei Zeitsteuerung auslösen*; DANN Skript `urlaub_halten.hms`
-- [ ] Test: Urlaub an → Heizkörperthermostate zeigen „Manu“ 16 °C; Urlaub aus → wieder „Auto“
+Schalter bleibt die Systemvariable `urlaub modus ein` (Favorit, @Home-App, virtuelle Taste 1). Alle Räume → 16 °C.
+- [x] `urlaub_test.hms` → „Fehlend: 0“
+- [ ] `alte_programme_loeschen.hms` (Probelauf, dann `loeschen = true`) – löscht Urlaub gerate, SYS Bestätigen, SYS war gestört
+- [ ] In „urlaub ein“ und „urlaub aus“ die Aktion im SONST-Zweig löschen
+- [ ] Ein Programm **Urlaubsmodus**: WENN `urlaub modus ein` bei **an** *bei Änderung auslösen* ODER Zeitsteuerung Zeitintervall 1 Std *bei Zeitsteuerung auslösen*; DANN **und** SONST: Skript `urlaubsmodus.hms`
+- [ ] Test: Urlaub an → Heizkörperthermostate „Manu“ 16 °C; Urlaub aus → „Auto“
 
-Wandthermostate (HM-CC-TC) mit Ventil bekommen 16 °C als Solltemperatur und kehren nach dem Urlaub beim nächsten
-Schaltzeitpunkt zu ihrem Wochenprogramm zurück. Heizkörperthermostate (HM-CC-RT-DN) gehen in den manuellen Betrieb
-und per „Urlaub aus“ zurück in den Automatikbetrieb. Wandthermostate ohne Ventil (Zimmer 3, 5, 7) werden nicht geschaltet.
+Das Skript entscheidet selbst anhand der Systemvariable. Wandthermostate (HM-CC-TC) bekommen im Urlaub stündlich 16 °C
+(manuell gesetzte Werte gelten bei ihnen nur bis zum nächsten Schaltzeitpunkt) und folgen danach wieder dem Wochenprogramm.
+Heizkörperthermostate (HM-CC-RT-DN) werden nur bei Bedarf geschaltet (Batterie): Urlaub → manuell 16 °C, danach → Automatik.
 
 ## 5. Systemvariablen (Nutzung geprüft)
 Skript: [`skripte/systemvariablen_loeschen.hms`](skripte/systemvariablen_loeschen.hms) (mit Probelauf)
