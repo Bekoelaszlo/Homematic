@@ -27,7 +27,11 @@ Nicht umbenannt: Systemgeräte und virtuelle Tasten (`urlaub:ein`, `urlaub:aus`)
 Zimmer 3 (JEQ0235880), Zimmer 5 (JEQ0457714), Zimmer 7 (JEQ0044237): HM-CC-TC ohne Ventil.
 Der HM-CC-TC liefert per Direktverknüpfung „Wettersensor → Heizungsthermostat (Empfänger Wetterdaten)“
 (TC Kanal 1 → RT-DN Kanal 1) die Raumtemperatur an den HM-CC-RT-DN, der danach regelt. **Bleibt so.**
-- [ ] Bestätigen, dass die Verknüpfung auch in Zimmer 3 und 5 existiert (Zimmer 7 gesehen)
+Fehlende Verknüpfungen (Profil „Standardverknüpfung Wettersensor – Heizungsthermostat“) anlegen:
+- [ ] Zimmer 3: JEQ0235880:1 → OEQ1257212:1
+- [ ] Zimmer 5: JEQ0457714:1 → LEQ1287076:1
+- [ ] Zimmer 4: JEQ0121520:1 → REQ0381230:1 (Sollwert/Zeiten an TC und RT-DN angleichen, TC regelt zusätzlich das Ventil)
+- [ ] Danach Servicemeldungen prüfen (Konfigurationsdaten übertragen)
 
 ## 4. Programme (Inhalt prüfen – braucht .sbk oder Screenshots)
 - [ ] `SYS Bestätigen` – deaktiviert, nie gelaufen → löschen?
