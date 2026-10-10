@@ -28,10 +28,12 @@ Zimmer 3 (JEQ0235880), Zimmer 5 (JEQ0457714), Zimmer 7 (JEQ0044237): HM-CC-TC oh
 Der HM-CC-TC liefert per Direktverknüpfung „Wettersensor → Heizungsthermostat (Empfänger Wetterdaten)“
 (TC Kanal 1 → RT-DN Kanal 1) die Raumtemperatur an den HM-CC-RT-DN, der danach regelt. **Bleibt so.**
 Fehlende Verknüpfungen (Profil „Standardverknüpfung Wettersensor – Heizungsthermostat“) anlegen:
-- [ ] Zimmer 3: JEQ0235880:1 → OEQ1257212:1
+- [x] Zimmer 3: JEQ0235880:1 → OEQ1257212:1 vorhanden
 - [ ] Zimmer 5: JEQ0457714:1 → LEQ1287076:1
 - [x] Zimmer 4: vorhanden (TC:1 → RT-DN:1, TC:2 → Ventil, Fensterkontakt → TC:3 und RT-DN:3). Sollwert/Zeiten an TC und RT-DN gleich halten.
-- [ ] Zimmer 3 und 5: auch Fensterkontakt → RT-DN:3 vorhanden?
+- [x] Zimmer 7: Fensterkontakt MEQ1831605:1 → REQ0381224:3 vorhanden
+- [ ] Zimmer 3: Fensterkontakt OEQ2246622:1 → OEQ1257212:3 vorhanden?
+- [ ] Zimmer 5: Fensterkontakt NEQ1156915:1 → LEQ1287076:3 vorhanden?
 - [ ] Danach Servicemeldungen prüfen (Konfigurationsdaten übertragen)
 
 ## 4. Programme (Inhalt prüfen – braucht .sbk oder Screenshots)
