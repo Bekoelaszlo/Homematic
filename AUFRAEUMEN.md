@@ -87,3 +87,6 @@ UNREACH seit 20:52 (alle drei innerhalb von 2 Sekunden), alles Ventilantriebe HM
 Ein HM-CC-VD spricht nur mit seinem Wandthermostat; die CCU hört mit. UNREACH heißt zuerst nur: die CCU hat ihn
 eine Weile nicht gehört. Prüfen: Display am Ventil (Fehlercode?), Heizkörper warm/regelt?, Batterien.
 `skripte/status_gesamt.hms` bzw. `skripte/servicemeldungen.hms` morgen erneut ausführen.
+
+Neu seit 22:15:
+- [ ] Girls Bad Wandthermostat (KEQ0010690): **Batterie leer** (LOWBAT) → Batterien tauschen. Kann auch die Funkstörung zum Girls Bad Ventil erklären.
