@@ -1,0 +1,8 @@
+! Urlaubsmodus HALTEN - als Skript im Programm "Urlaub halten" (stuendlich, nur wenn Urlaub an)
+! Nur die alten Wandthermostate; die Heizkoerperthermostate bleiben ohnehin im manuellen Betrieb.
+real t = 19.0;
+string a; object dp;
+foreach(a, "KEQ0011339\tIEQ0444515\tKEQ0010690\tKEQ0011910\tKEQ0011850\tKEQ0009984\tJEQ0457275\tJEQ0457264\tJEQ0121520\tJEQ0121592\tKEQ0010505") {
+  dp = dom.GetObject("BidCos-RF." # a # ":2.SETPOINT");
+  if (dp) { dp.State(t); }
+}

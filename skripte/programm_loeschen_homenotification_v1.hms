@@ -1,0 +1,10 @@
+! Loescht das unsichtbare Programm "@HomeNotificationSender" (alte @Home-API). V2 bleibt.
+! Erst mit loeschen = false pruefen.
+boolean loeschen = false;
+object p = dom.GetObject(15889);
+if (p) {
+  if (p.Name() == "@HomeNotificationSender") {
+    WriteLine("OK: " # p.Name());
+    if (loeschen) { dom.GetObject(ID_PROGRAMS).Remove(15889); dom.DeleteObject(15889); WriteLine("geloescht"); }
+  } else { WriteLine("ANDERS: " # p.Name() # " - nichts geloescht"); }
+} else { WriteLine("nicht gefunden"); }

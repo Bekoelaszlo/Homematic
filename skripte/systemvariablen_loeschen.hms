@@ -1,8 +1,9 @@
 ! Nicht genutzte / verwaiste Systemvariablen loeschen (geprueft anhand Backup vom 10.10.2026)
+! Enthaelt auch die Variablen der HomeControl/myHome-App (myHome...) - nur ausfuehren, wenn diese App nicht genutzt wird.
 ! Erst mit loeschen = false laufen lassen: jede Zeile muss "OK" zeigen.
 ! Nur wenn alle Zeilen OK sind, loeschen = true setzen und erneut ausfuehren.
 boolean loeschen = false;
-string liste = "9139=Systemvariable\t11535=Systemvariable 1\t16541=Heizungsautomati\t11187=schloss\t11504=svEnergyCounter_11479_CUX3700001:2\t11505=svEnergyCounterOldVal_11479";
+string liste = "9139=Systemvariable\t11535=Systemvariable 1\t16541=Heizungsautomati\t11187=schloss\t11504=svEnergyCounter_11479_CUX3700001:2\t11505=svEnergyCounterOldVal_11479\t12237=myHomeToken\t12238=myHomeLastPushMessage\t12289=myHomeLastPushMessage 1";
 string e; string soll; integer id; object o; integer z = 0;
 foreach(e, liste) {
   id = e.StrValueByIndex("=", 0).ToInteger();

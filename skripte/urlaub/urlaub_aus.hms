@@ -1,0 +1,9 @@
+! Urlaubsmodus AUS - als Skript im Programm "Urlaubsmodus" (SONST)
+! Heizkoerperthermostate zurueck in den Automatikbetrieb.
+! Die Wandthermostate sind nie aus dem Automatikbetrieb gegangen und folgen ab dem
+! naechsten Schaltzeitpunkt wieder ihrem Wochenprogramm.
+string a; object dp;
+foreach(a, "OEQ1257004\tOEQ1257212\tREQ0381230\tLEQ1287076\tREQ0381224") {
+  dp = dom.GetObject("BidCos-RF." # a # ":4.AUTO_MODE");
+  if (dp) { dp.State(true); }
+}
