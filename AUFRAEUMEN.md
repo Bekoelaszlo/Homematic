@@ -69,9 +69,9 @@ Skript: [`skripte/systemvariablen_loeschen.hms`](skripte/systemvariablen_loesche
 - [x] `Heizungsautomati` – nirgends genutzt → gelöscht 10.10.2026
 - [x] `schloss` – an einen Kanal gebunden, den es nicht mehr gibt → gelöscht 10.10.2026
 - [x] `svEnergyCounter_11479_CUX3700001:2`, `svEnergyCounterOldVal_11479` – unsichtbare Reste eines gelöschten Energiezählers → gelöscht 10.10.2026
-- [ ] `myHomeToken`, `myHomeLastPushMessage`, `myHomeLastPushMessage 1` (Alarmvariable) – HomeControl/myHome-App; → `skripte/systemvariablen_loeschen_optional.hms`
+- [x] `myHomeToken`, `myHomeLastPushMessage`, `myHomeLastPushMessage 1` (Alarmvariable) – HomeControl/myHome-App → gelöscht 10.10.2026
 - `@HomeNotification` – @Home-App → behalten
-- [ ] `Alarmzone 1`, `Anwesenheit` – CCU-Standard, nirgends genutzt → `skripte/systemvariablen_loeschen_optional.hms`
+- [x] `Alarmzone 1`, `Anwesenheit` – CCU-Standard, nirgends genutzt → gelöscht 10.10.2026
 - behalten: `urlaub modus ein`, `Systemfall`; `-ActiveState`-Variablen gehören intern zu den Programmen
 
 ## 6. Firmware
