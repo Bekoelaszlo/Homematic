@@ -1,0 +1,14 @@
+! Listet alle aktiven Servicemeldungen - schaltet nichts. In "Skript testen" ausfuehren.
+string id; object o; object trg; object ch; integer n = 0;
+foreach(id, dom.GetObject(ID_SERVICES).EnumUsedIDs()) {
+  o = dom.GetObject(id);
+  if (o.AlState() == asOncoming) {
+    n = n + 1;
+    trg = dom.GetObject(o.AlTriggerDP());
+    if (trg) {
+      ch = dom.GetObject(trg.Channel());
+      if (ch) { WriteLine(ch.Name() # " - " # trg.Name() # " - seit " # o.Timestamp()); } else { WriteLine(trg.Name() # " - seit " # o.Timestamp()); }
+    } else { WriteLine(o.Name()); }
+  }
+}
+WriteLine("Aktive Servicemeldungen: " # n);
