@@ -69,13 +69,14 @@ Skript: [`skripte/systemvariablen_loeschen.hms`](skripte/systemvariablen_loesche
 - [x] `Heizungsautomati` – nirgends genutzt → gelöscht 10.10.2026
 - [x] `schloss` – an einen Kanal gebunden, den es nicht mehr gibt → gelöscht 10.10.2026
 - [x] `svEnergyCounter_11479_CUX3700001:2`, `svEnergyCounterOldVal_11479` – unsichtbare Reste eines gelöschten Energiezählers → gelöscht 10.10.2026
-- [ ] `myHomeToken`, `myHomeLastPushMessage`, `myHomeLastPushMessage 1` (Alarmvariable) – HomeControl/myHome-App; im Löschskript enthalten
+- [ ] `myHomeToken`, `myHomeLastPushMessage`, `myHomeLastPushMessage 1` (Alarmvariable) – HomeControl/myHome-App; → `skripte/systemvariablen_loeschen_optional.hms`
 - `@HomeNotification` – @Home-App → behalten
-- [ ] `Alarmzone 1`, `Anwesenheit` – CCU-Standard, nirgends genutzt; optional löschen
+- [ ] `Alarmzone 1`, `Anwesenheit` – CCU-Standard, nirgends genutzt → `skripte/systemvariablen_loeschen_optional.hms`
 - behalten: `urlaub modus ein`, `Systemfall`; `-ActiveState`-Variablen gehören intern zu den Programmen
 
 ## 6. Firmware
 - [ ] CCU2 läuft mit 2.41.5 (2018). Auf die letzte CCU2-Firmware aktualisieren (Sicherheitsupdates) – vorher Backup.
+- Installiertes Add-on: **CloudMatic** (Fernzugriff/Push) – nach dem Update prüfen, ob es weiter läuft.
 
 ## 7. Servicemeldungen (Stand 10.10.2026, 21:30)
 UNREACH seit 20:52 (alle drei innerhalb von 2 Sekunden), alles Ventilantriebe HM-CC-VD:
