@@ -1,0 +1,37 @@
+! Gesamtstatus: Programme, Systemvariablen, Urlaubsmodus, Heizung - schaltet nichts. In "Skript testen" ausfuehren.
+string id; string a; object o; object dp; object cm; object st; string m;
+WriteLine("=== PROGRAMME: ID;Name;Aktiv;Zuletzt");
+foreach(id, dom.GetObject(ID_PROGRAMS).EnumIDs()) {
+  o = dom.GetObject(id);
+  if (o) { WriteLine(id # ";" # o.Name() # ";" # o.Active() # ";" # o.ProgramLastExecuteTime()); }
+}
+WriteLine("=== SYSTEMVARIABLEN: ID;Name;Wert");
+foreach(id, dom.GetObject(ID_SYSTEM_VARIABLES).EnumIDs()) {
+  o = dom.GetObject(id);
+  if (o) { WriteLine(id # ";" # o.Name() # ";" # o.Value()); }
+}
+WriteLine("=== ALTE RESTE (sollten FEHLEN)");
+foreach(id, "9139\t11535\t16541\t11187\t11504\t11505\t16542\t12738\t12763\t15889") {
+  o = dom.GetObject(id.ToInteger());
+  if (o) { WriteLine("NOCH DA " # id # " " # o.Name()); } else { WriteLine("weg     " # id); }
+}
+WriteLine("=== SERVICEMELDUNGEN: " # dom.GetObject(41).Value());
+WriteLine("=== URLAUBSMODUS: " # dom.GetObject("urlaub modus ein").Value());
+WriteLine("--- Wandthermostate (Solltemperatur)");
+foreach(a, "KEQ0011339\tIEQ0444515\tKEQ0010690\tKEQ0011910\tKEQ0011850\tKEQ0009984\tJEQ0457275\tJEQ0457264\tJEQ0121520\tJEQ0121592\tKEQ0010505") {
+  dp = dom.GetObject("BidCos-RF." # a # ":2.SETPOINT");
+  if (dp) { WriteLine(a # "  " # dp.Value().ToString(1)); }
+}
+WriteLine("--- Heizkoerperthermostate (Modus / Solltemperatur)");
+foreach(a, "OEQ1257004\tOEQ1257212\tREQ0381230\tLEQ1287076\tREQ0381224") {
+  cm = dom.GetObject("BidCos-RF." # a # ":4.CONTROL_MODE");
+  st = dom.GetObject("BidCos-RF." # a # ":4.SET_TEMPERATURE");
+  if (cm && st) {
+    m = "?";
+    if (cm.Value() == 0) { m = "Auto"; }
+    if (cm.Value() == 1) { m = "Manu"; }
+    if (cm.Value() == 2) { m = "Party/Urlaub"; }
+    if (cm.Value() == 3) { m = "Boost"; }
+    WriteLine(a # "  " # m # "  " # st.Value().ToString(1));
+  }
+}
