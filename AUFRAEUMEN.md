@@ -64,11 +64,11 @@ Heizkörperthermostate (HM-CC-RT-DN) werden nur bei Bedarf geschaltet (Batterie)
 
 ## 5. Systemvariablen (Nutzung geprüft)
 Skript: [`skripte/systemvariablen_loeschen.hms`](skripte/systemvariablen_loeschen.hms) (mit Probelauf)
-- [ ] `Systemvariable` – nirgends genutzt → löschen
-- [ ] `Systemvariable 1` (Text „???“) – nirgends genutzt → löschen
-- [ ] `Heizungsautomati` – nirgends genutzt → löschen
-- [ ] `schloss` – an einen Kanal gebunden, den es nicht mehr gibt → löschen
-- [ ] `svEnergyCounter_11479_CUX3700001:2`, `svEnergyCounterOldVal_11479` – unsichtbare Reste eines gelöschten Energiezählers → löschen
+- [x] `Systemvariable` – nirgends genutzt → gelöscht 10.10.2026
+- [x] `Systemvariable 1` (Text „???“) – nirgends genutzt → gelöscht 10.10.2026
+- [x] `Heizungsautomati` – nirgends genutzt → gelöscht 10.10.2026
+- [x] `schloss` – an einen Kanal gebunden, den es nicht mehr gibt → gelöscht 10.10.2026
+- [x] `svEnergyCounter_11479_CUX3700001:2`, `svEnergyCounterOldVal_11479` – unsichtbare Reste eines gelöschten Energiezählers → gelöscht 10.10.2026
 - [ ] `myHomeToken`, `myHomeLastPushMessage`, `myHomeLastPushMessage 1` (Alarmvariable) – HomeControl/myHome-App; im Löschskript enthalten
 - `@HomeNotification` – @Home-App → behalten
 - [ ] `Alarmzone 1`, `Anwesenheit` – CCU-Standard, nirgends genutzt; optional löschen
