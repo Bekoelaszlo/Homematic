@@ -20,7 +20,7 @@ KEQ0010690:3;Girls Bad 1.3;Girls Bad Wandthermostat Fensterempfang
 KEQ0012342;Girls Bad 2;Girls Bad Ventil
 KEQ0012342:1;Girls Bad 2.1;Girls Bad Ventil
 OEQ1257004;Küche 1.1;Küche Heizkörperthermostat
-OEQ1257004:1;Küche 1.1;Küche Heizkörperthermostat Temperatur
+OEQ1257004:1;Küche 1.1;Küche Heizkörperthermostat Temperaturempfang
 OEQ1257004:2;Küche 1.1 1;Küche Heizkörperthermostat Klima
 OEQ1257004:3;Küche-1.1 2;Küche Heizkörperthermostat Fensterempfang
 OEQ1257004:4;Küche-1.1 3;Küche Heizkörperthermostat Regler
@@ -87,7 +87,7 @@ JEQ0235880:1;Zimmer 3 2;Zimmer 3 Wandthermostat Temperatur
 JEQ0235880:2;Zimmer 3 3;Zimmer 3 Wandthermostat Regler
 JEQ0235880:3;Zimmer 3 4;Zimmer 3 Wandthermostat Fensterempfang
 OEQ1257212;Zimmer 3 1;Zimmer 3 Heizkörperthermostat
-OEQ1257212:1;HM-CC-RT-DN OEQ1257212:1;Zimmer 3 Heizkörperthermostat Temperatur
+OEQ1257212:1;HM-CC-RT-DN OEQ1257212:1;Zimmer 3 Heizkörperthermostat Temperaturempfang
 OEQ1257212:2;HM-CC-RT-DN OEQ1257212:2;Zimmer 3 Heizkörperthermostat Klima
 OEQ1257212:3;HM-CC-RT-DN OEQ1257212:3;Zimmer 3 Heizkörperthermostat Fensterempfang
 OEQ1257212:4;Zimmer 3;Zimmer 3 Heizkörperthermostat Regler
@@ -102,7 +102,7 @@ JEQ0121520:3;Zimmer 4 2.3;Zimmer 4 Wandthermostat Fensterempfang
 JEQ0458465;Zimmer 4 2.2;Zimmer 4 Ventil
 JEQ0458465:1;Zimmer 4 2.2 1;Zimmer 4 Ventil
 REQ0381230;Zimmer 4 1;Zimmer 4 Heizkörperthermostat
-REQ0381230:1;Zimmer 4 1;Zimmer 4 Heizkörperthermostat Temperatur
+REQ0381230:1;Zimmer 4 1;Zimmer 4 Heizkörperthermostat Temperaturempfang
 REQ0381230:2;Zimmer 4 2;Zimmer 4 Heizkörperthermostat Klima
 REQ0381230:3;Zimmer 4 3;Zimmer 4 Heizkörperthermostat Fensterempfang
 REQ0381230:4;HM-CC-RT-DN REQ0381230:4;Zimmer 4 Heizkörperthermostat Regler
@@ -115,7 +115,7 @@ JEQ0457714:1;Zimmer 5;Zimmer 5 Wandthermostat Temperatur
 JEQ0457714:2;Zimmer 5 1;Zimmer 5 Wandthermostat Regler
 JEQ0457714:3;Zimmer 5 2;Zimmer 5 Wandthermostat Fensterempfang
 LEQ1287076;Zimmer 5.5;Zimmer 5 Heizkörperthermostat
-LEQ1287076:1;Zimmer 5.5;Zimmer 5 Heizkörperthermostat Temperatur
+LEQ1287076:1;Zimmer 5.5;Zimmer 5 Heizkörperthermostat Temperaturempfang
 LEQ1287076:2;Zimmer 5.5 1;Zimmer 5 Heizkörperthermostat Klima
 LEQ1287076:3;Zimmer 5.5 2;Zimmer 5 Heizkörperthermostat Fensterempfang
 LEQ1287076:4;Zimmer 5.5 3;Zimmer 5 Heizkörperthermostat Regler
@@ -136,7 +136,7 @@ JEQ0044237:1;Zimmer 7;Zimmer 7 Wandthermostat Temperatur
 JEQ0044237:2;Zimmer 7 1;Zimmer 7 Wandthermostat Regler
 JEQ0044237:3;Zimmer 7 2;Zimmer 7 Wandthermostat Fensterempfang
 REQ0381224;Zimmer 7.2;Zimmer 7 Heizkörperthermostat
-REQ0381224:1;Zimmer 7.2.1;Zimmer 7 Heizkörperthermostat Temperatur
+REQ0381224:1;Zimmer 7.2.1;Zimmer 7 Heizkörperthermostat Temperaturempfang
 REQ0381224:2;Zimmer 7.2.2;Zimmer 7 Heizkörperthermostat Klima
 REQ0381224:3;Zimmer 7.2.3;Zimmer 7 Heizkörperthermostat Fensterempfang
 REQ0381224:4;Zimmer 7.2.4;Zimmer 7 Heizkörperthermostat Regler

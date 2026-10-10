@@ -23,9 +23,11 @@ Nicht umbenannt: Systemgeräte und virtuelle Tasten (`urlaub:ein`, `urlaub:aus`)
 - [ ] Fernbedienungs-Tasten 11/12 unbelegt (ok)
 - [ ] Raum „URLAUB“ → besser Gewerk „Szenen/Zentrale“, Raum löschen (optional)
 
-## 3. Heizung: alte Wandthermostate ohne Ventil ✅ geklärt
-Zimmer 3 (JEQ0235880), Zimmer 5 (JEQ0457714), Zimmer 7 (JEQ0044237): HM-CC-TC ohne Ventil, geregelt wird per HM-CC-RT-DN.
-**Bleiben** – werden als Raumtemperaturfühler genutzt.
+## 3. Heizung: Wandthermostat + Heizkörperthermostat ✅ geklärt
+Zimmer 3 (JEQ0235880), Zimmer 5 (JEQ0457714), Zimmer 7 (JEQ0044237): HM-CC-TC ohne Ventil.
+Der HM-CC-TC liefert per Direktverknüpfung „Wettersensor → Heizungsthermostat (Empfänger Wetterdaten)“
+(TC Kanal 1 → RT-DN Kanal 1) die Raumtemperatur an den HM-CC-RT-DN, der danach regelt. **Bleibt so.**
+- [ ] Bestätigen, dass die Verknüpfung auch in Zimmer 3 und 5 existiert (Zimmer 7 gesehen)
 
 ## 4. Programme (Inhalt prüfen – braucht .sbk oder Screenshots)
 - [ ] `SYS Bestätigen` – deaktiviert, nie gelaufen → löschen?
