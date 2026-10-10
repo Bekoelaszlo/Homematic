@@ -1,0 +1,6 @@
+! Einmalig: alle Heizkoerperthermostate (Kueche, Zimmer 3, 4, 5, 7) zurueck auf Automatik. In "Skript testen" ausfuehren.
+string a;
+foreach(a, "OEQ1257004\tOEQ1257212\tREQ0381230\tLEQ1287076\tREQ0381224") {
+  dom.GetObject("BidCos-RF." # a # ":4.AUTO_MODE").State(true);
+  WriteLine("Auto gesendet: " # a);
+}

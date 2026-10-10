@@ -1,10 +1,14 @@
 ! URLAUBSMODUS - ein Skript fuer alles. Im Programm "Urlaubsmodus" bei DANN und bei SONST einfuegen.
 ! Liest selbst die Systemvariable "urlaub modus ein" und stellt die Heizung passend ein:
 !   Urlaub an  -> alle Raeume auf t Grad (Wandthermostate jede Stunde neu, Heizkoerperthermostate manuell)
-!   Urlaub aus -> Heizkoerperthermostate zurueck auf Automatik, Wandthermostate folgen wieder ihrem Wochenprogramm
+!   Urlaub aus -> Heizkoerperthermostate zurueck auf Automatik, Wandthermostate folgen ab dem
+!                 naechsten Schaltzeitpunkt wieder ihrem Wochenprogramm
 real t = 16.0;
-string a; object dp; object cm; object st;
-boolean urlaub = dom.GetObject("urlaub modus ein").Value();
+string a; object dp; object cm;
+object uv = dom.GetObject("urlaub modus ein");
+boolean urlaub = uv.Value();
+! Gerade umgeschaltet (letzte 3 Minuten)? Sonst ist es der stuendliche Lauf.
+boolean neu = ((system.Date("%F %X").ToTime().ToInteger() - uv.Timestamp().ToInteger()) < 180);
 if (urlaub) {
   ! Wandthermostate mit Ventil: Bad Gaeste, Flur, Girls Bad, Reci, Solarium, Waschraum, Zimmer 1, 2, 4, 6, 8
   foreach(a, "KEQ0011339\tIEQ0444515\tKEQ0010690\tKEQ0011910\tKEQ0011850\tKEQ0009984\tJEQ0457275\tJEQ0457264\tJEQ0121520\tJEQ0121592\tKEQ0010505") {
@@ -12,17 +16,17 @@ if (urlaub) {
     if (dp) { dp.State(t); }
   }
 }
-! Heizkoerperthermostate: Kueche, Zimmer 3, 4, 5, 7 (nur senden, wenn noetig - schont die Batterien)
+! Heizkoerperthermostate: Kueche, Zimmer 3, 4, 5, 7
+! Gesendet wird nur beim Umschalten (bzw. stuendlich, falls einer nicht mehr auf Manu steht) - schont die Batterien.
 foreach(a, "OEQ1257004\tOEQ1257212\tREQ0381230\tLEQ1287076\tREQ0381224") {
   cm = dom.GetObject("BidCos-RF." # a # ":4.CONTROL_MODE");
-  st = dom.GetObject("BidCos-RF." # a # ":4.SET_TEMPERATURE");
-  if (cm && st) {
+  if (cm) {
     if (urlaub) {
-      if ((cm.Value() != 1) || (st.Value() < t - 0.1) || (st.Value() > t + 0.1)) {
+      if (neu || (cm.Value() != 1)) {
         dom.GetObject("BidCos-RF." # a # ":4.MANU_MODE").State(t);
       }
     } else {
-      if ((cm.Value() == 1) && (st.Value() > t - 0.1) && (st.Value() < t + 0.1)) {
+      if (neu && (cm.Value() != 0)) {
         dom.GetObject("BidCos-RF." # a # ":4.AUTO_MODE").State(true);
       }
     }
