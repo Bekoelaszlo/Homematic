@@ -52,6 +52,7 @@ die Raumtemperatur an den HM-CC-RT-DN; Fensterkontakt → RT-DN:3 überall vorha
 ### Neuer Urlaubsmodus (`skripte/urlaub/`)
 Schalter bleibt die Systemvariable `urlaub modus ein` (Favorit, @Home-App, virtuelle Taste 1). Alle Räume → 16 °C.
 - [x] `urlaub_test.hms` → „Fehlend: 0“
+- `urlaub_anzeige.hms` zeigt jederzeit den Zustand (schaltet nichts)
 - [ ] `alte_programme_loeschen.hms` (Probelauf, dann `loeschen = true`) – löscht Urlaub gerate, SYS Bestätigen, SYS war gestört
 - [ ] In „urlaub ein“ und „urlaub aus“ die Aktion im SONST-Zweig löschen
 - [ ] Ein Programm **Urlaubsmodus**: WENN `urlaub modus ein` bei **an** *bei Änderung auslösen* ODER Zeitsteuerung Zeitintervall 1 Std *bei Zeitsteuerung auslösen*; DANN **und** SONST: Skript `urlaubsmodus.hms`
