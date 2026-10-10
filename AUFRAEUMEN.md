@@ -76,3 +76,13 @@ Skript: [`skripte/systemvariablen_loeschen.hms`](skripte/systemvariablen_loesche
 
 ## 6. Firmware
 - [ ] CCU2 läuft mit 2.41.5 (2018). Auf die letzte CCU2-Firmware aktualisieren (Sicherheitsupdates) – vorher Backup.
+
+## 7. Servicemeldungen (Stand 10.10.2026, 21:30)
+UNREACH seit 20:52 (alle drei innerhalb von 2 Sekunden), alles Ventilantriebe HM-CC-VD:
+- [ ] Zimmer 6 Ventil (JEQ0377802)
+- [ ] Girls Bad Ventil (KEQ0012342)
+- [ ] Zimmer 8 Ventil 1 (IEQ0171850)
+
+Ein HM-CC-VD spricht nur mit seinem Wandthermostat; die CCU hört mit. UNREACH heißt zuerst nur: die CCU hat ihn
+eine Weile nicht gehört. Prüfen: Display am Ventil (Fehlercode?), Heizkörper warm/regelt?, Batterien.
+`skripte/status_gesamt.hms` bzw. `skripte/servicemeldungen.hms` morgen erneut ausführen.
