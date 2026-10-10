@@ -15,12 +15,13 @@ Damit sind auch erledigt: Tippfehler `Washraum 1.3`, doppeltes Leerzeichen `Wasc
 - [ ] Prüfen, ob Programme **HM-Skripte** enthalten, die Geräte über den Namen ansprechen (`dom.GetObject("…")`) – die würden nach dem Umbenennen nicht mehr funktionieren. Programme mit normalen Bedingungen/Aktionen sind nicht betroffen (Verknüpfung über ID).
 - [x] Probelauf (`aendern = false`), Ausgabe prüfen – 172/172 gefunden
 - [x] Echtlauf (`aendern = true`) – „Umbenannt: 172“ (10.10.2026)
-- [ ] Kontrolle mit `skripte/export_kanaele.hms`
+- [x] Kontrolle mit `skripte/export_kanaele.hms` – alle Namen übernommen
 
 Nicht umbenannt: Systemgeräte und virtuelle Tasten (`urlaub:ein`, `urlaub:aus`) – evtl. von der myHome-App oder Programmen per Name genutzt.
 
 ## 2. Räume
-- [ ] Zimmer 5: Wandthermostat-Kanäle `:2` (Regler) und `:3` sind keinem Raum zugeordnet
+- [ ] Zimmer 5: „Zimmer 5 Wandthermostat Regler“ und „… Fensterempfang“ dem Raum Zimmer 5 zuordnen
+- [ ] Optional: Heizkörperthermostat-Kanäle 1, 2, 3, 5, 6 in Zimmer 3 und 5 dem Raum zuordnen (wie in Küche/Zimmer 4/7) – rein kosmetisch
 - [ ] Fernbedienungs-Tasten 11/12 unbelegt (ok)
 - [ ] Raum „URLAUB“ → besser Gewerk „Szenen/Zentrale“, Raum löschen (optional)
 
