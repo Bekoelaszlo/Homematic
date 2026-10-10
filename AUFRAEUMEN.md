@@ -30,7 +30,8 @@ Der HM-CC-TC liefert per Direktverknüpfung „Wettersensor → Heizungsthermost
 Fehlende Verknüpfungen (Profil „Standardverknüpfung Wettersensor – Heizungsthermostat“) anlegen:
 - [ ] Zimmer 3: JEQ0235880:1 → OEQ1257212:1
 - [ ] Zimmer 5: JEQ0457714:1 → LEQ1287076:1
-- [ ] Zimmer 4: JEQ0121520:1 → REQ0381230:1 (Sollwert/Zeiten an TC und RT-DN angleichen, TC regelt zusätzlich das Ventil)
+- [x] Zimmer 4: vorhanden (TC:1 → RT-DN:1, TC:2 → Ventil, Fensterkontakt → TC:3 und RT-DN:3). Sollwert/Zeiten an TC und RT-DN gleich halten.
+- [ ] Zimmer 3 und 5: auch Fensterkontakt → RT-DN:3 vorhanden?
 - [ ] Danach Servicemeldungen prüfen (Konfigurationsdaten übertragen)
 
 ## 4. Programme (Inhalt prüfen – braucht .sbk oder Screenshots)
