@@ -121,4 +121,5 @@ Ersatz: **IEQ0078470** (HM-CC-VD). Prüfen mit `skripte/girlsbad_tausch_check.hm
 - [x] Altes Ventil IEQ0171850 (Notstellung 15 %) durch HEQ0238742 ersetzt
 - [ ] Erste Meldung prüfen (`skripte/ventile_check.hms` findet jetzt alle HM-CC-VD automatisch)
 - [ ] Danach Fenster-Test Zimmer 8 wiederholen (`skripte/zimmer8_check.hms`; Wandthermostat ging bei offenem Fenster auf 25 °C statt 12 °C)
-- [ ] Zimmer 6 Ventil (JEQ0377802) – Display? Ggf. ebenfalls tauschen
+- [x] Zimmer 6 Ventil JEQ0377802 durch **JEQ0045982** ersetzt
+- [ ] Erste Meldung Zimmer 6 und Zimmer 8 Ventil 1 prüfen (`ventile_check.hms`)
