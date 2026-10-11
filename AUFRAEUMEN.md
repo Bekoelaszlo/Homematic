@@ -75,7 +75,8 @@ Skript: [`skripte/systemvariablen_loeschen.hms`](skripte/systemvariablen_loesche
 - behalten: `urlaub modus ein`, `Systemfall`; `-ActiveState`-Variablen gehören intern zu den Programmen
 
 ## 6. Firmware
-- [ ] CCU2 läuft mit 2.41.5 (2018). Auf die letzte CCU2-Firmware aktualisieren (Sicherheitsupdates) – vorher Backup.
+- [x] Firmware von 2.41.5 auf **2.61.7** aktualisiert (11.10.2026)
+- [ ] Nach dem Update prüfen: `status_gesamt.hms`, @Home-Push, CloudMatic
 - Installiertes Add-on: **CloudMatic** (Fernzugriff/Push) – nach dem Update prüfen, ob es weiter läuft.
 
 ## 7. Servicemeldungen (Stand 10.10.2026, 21:30)
@@ -87,6 +88,9 @@ UNREACH seit 20:52 (alle drei innerhalb von 2 Sekunden), alles Ventilantriebe HM
 Ein HM-CC-VD spricht nur mit seinem Wandthermostat; die CCU hört mit. UNREACH heißt zuerst nur: die CCU hat ihn
 eine Weile nicht gehört. Prüfen: Display am Ventil (Fehlercode?), Heizkörper warm/regelt?, Batterien.
 `skripte/status_gesamt.hms` bzw. `skripte/servicemeldungen.hms` morgen erneut ausführen.
+
+Protokoll vom 11.10. 03:35: Die Wandthermostate senden an diese drei Ventile, die Ventile antworten nicht → Batterien tauschen.
+Nach dem Firmware-Update stehen die Servicemeldungen zunächst auf 0 – die Meldungen kommen zurück, solange die Ventile nicht antworten.
 
 Neu seit 22:15:
 - [ ] Girls Bad Wandthermostat (KEQ0010690): **Batterie leer** (LOWBAT) → Batterien tauschen. Kann auch die Funkstörung zum Girls Bad Ventil erklären.
