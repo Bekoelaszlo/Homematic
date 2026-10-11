@@ -1,0 +1,22 @@
+! Zimmer 8: Fensterkontakte, Wandthermostat und alle 3 Ventile auf einen Blick - schaltet nichts.
+! Am besten zweimal ausfuehren: Fenster zu, dann Fenster 3-5 Minuten offen.
+string e; string a; object dp; object ur;
+WriteLine("--- Fensterkontakte (true = offen)");
+foreach(e, "OEQ2242120=Fensterkontakt 1\tNEQ1157132=Fensterkontakt 2") {
+  a = e.StrValueByIndex("=", 0);
+  dp = dom.GetObject("BidCos-RF." # a # ":1.STATE");
+  ur = dom.GetObject("BidCos-RF." # a # ":0.UNREACH");
+  if (dp) { WriteLine(e.StrValueByIndex("=", 1) # ": " # dp.Value() # "  (seit " # dp.Timestamp() # ", nicht erreichbar: " # ur.Value() # ")"); }
+}
+WriteLine("--- Wandthermostat");
+dp = dom.GetObject("BidCos-RF.KEQ0010505:2.SETPOINT");
+if (dp) { WriteLine("Solltemperatur: " # dp.Value().ToString(1) # "  (seit " # dp.Timestamp() # ")"); }
+dp = dom.GetObject("BidCos-RF.KEQ0010505:1.TEMPERATURE");
+if (dp) { WriteLine("Raumtemperatur: " # dp.Value().ToString(1)); }
+WriteLine("--- Ventile (Oeffnung in %)");
+foreach(e, "IEQ0171850=Ventil 1\tKEQ0492688=Ventil 2\tJEQ0377716=Ventil 3") {
+  a = e.StrValueByIndex("=", 0);
+  dp = dom.GetObject("BidCos-RF." # a # ":1.VALVE_STATE");
+  ur = dom.GetObject("BidCos-RF." # a # ":0.UNREACH");
+  if (dp) { WriteLine(e.StrValueByIndex("=", 1) # ": " # dp.Value() # " %  (seit " # dp.Timestamp() # ", nicht erreichbar: " # ur.Value() # ")"); }
+}
