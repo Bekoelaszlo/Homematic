@@ -1,15 +1,19 @@
-! Alle Ventilantriebe (HM-CC-VD): Oeffnung, letzte Meldung, erreichbar? - schaltet nichts.
-! "zuletzt" muss nach dem Batterietausch liegen, sonst hat die CCU das Ventil seitdem nicht gehoert.
-string e; string a; object dp; object ur; string s;
-foreach(e, "KEQ0013553=Bad Gaeste\tKEQ0359933=Flur\tIEQ0078470=Girls Bad\tKEQ0013212=Reci\tJEQ0531543=Solarium\tJEQ0045993=Waschraum\tJEQ0458444=Zimmer 1\tJEQ0458454=Zimmer 2\tJEQ0458465=Zimmer 4\tJEQ0377802=Zimmer 6\tIEQ0171850=Zimmer 8 Ventil 1\tKEQ0492688=Zimmer 8 Ventil 2\tJEQ0377716=Zimmer 8 Ventil 3") {
-  a = e.StrValueByIndex("=", 0);
-  dp = dom.GetObject("BidCos-RF." # a # ":1.VALVE_STATE");
-  ur = dom.GetObject("BidCos-RF." # a # ":0.UNREACH");
-  s = e.StrValueByIndex("=", 1) # ": ";
-  if (dp) { s = s # dp.Value() # " %  zuletzt " # dp.Timestamp(); }
-  if (ur) { if (ur.Value()) { s = s # "  NICHT ERREICHBAR"; } }
-  WriteLine(s);
+! Alle Ventilantriebe (HM-CC-VD) automatisch: Oeffnung, letzte Meldung, erreichbar? - schaltet nichts.
+! "zuletzt" sollte nur wenige Minuten alt sein; sonst hat die CCU das Ventil seitdem nicht gehoert.
+string id; object d; string a; object dp; object ur; object cp; string s;
+foreach(id, dom.GetObject(ID_DEVICES).EnumUsedIDs()) {
+  d = dom.GetObject(id);
+  if (d.HssType() == "HM-CC-VD") {
+    a = d.Address();
+    dp = dom.GetObject("BidCos-RF." # a # ":1.VALVE_STATE");
+    ur = dom.GetObject("BidCos-RF." # a # ":0.UNREACH");
+    cp = dom.GetObject("BidCos-RF." # a # ":0.CONFIG_PENDING");
+    s = d.Name() # " (" # a # "): ";
+    if (dp) { s = s # dp.Value() # " %  zuletzt " # dp.Timestamp(); }
+    if (ur) { if (ur.Value()) { s = s # "  NICHT ERREICHBAR"; } }
+    if (cp) { if (cp.Value()) { s = s # "  KONFIG AUSSTEHEND"; } }
+    if (!d.ReadyConfig()) { s = s # "  IM POSTEINGANG"; }
+    WriteLine(s);
+  }
 }
-dp = dom.GetObject("BidCos-RF.KEQ0010690:0.LOWBAT");
-if (dp) { WriteLine("Girls Bad Wandthermostat Batterie leer: " # dp.Value()); }
 WriteLine("Servicemeldungen: " # dom.GetObject(41).Value());

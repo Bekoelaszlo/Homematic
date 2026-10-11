@@ -116,3 +116,9 @@ Ersatz: **IEQ0078470** (HM-CC-VD). Prüfen mit `skripte/girlsbad_tausch_check.hm
 - [x] Erste Ventilmeldung 20:24 – Girls Bad läuft wieder ✅
 - [x] Altes Gerät KEQ0012342 aus der CCU entfernt
 - Danach ggf. Zimmer 6 Ventil (JEQ0377802) und Zimmer 8 Ventil 1 (IEQ0171850) genauso (beide zeigen 15 + Antennensymbol?)
+
+## 10. Zimmer 8 Ventil 1 getauscht
+- [x] Altes Ventil IEQ0171850 (Notstellung 15 %) durch Ersatzgerät ersetzt
+- [ ] Erste Meldung prüfen (`skripte/ventile_check.hms` findet jetzt alle HM-CC-VD automatisch)
+- [ ] Danach Fenster-Test Zimmer 8 wiederholen (`skripte/zimmer8_check.hms`; Wandthermostat ging bei offenem Fenster auf 25 °C statt 12 °C)
+- [ ] Zimmer 6 Ventil (JEQ0377802) – Display? Ggf. ebenfalls tauschen
