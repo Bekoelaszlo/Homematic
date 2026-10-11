@@ -129,5 +129,6 @@ Ersatz: **IEQ0078470** (HM-CC-VD). Prüfen mit `skripte/girlsbad_tausch_check.hm
 - [x] Zimmer 8: Fenster offen → Wandthermostat 12 °C ✅ (Problem von gestern behoben)
 - [x] Zimmer 5: Fenster offen → Heizkörperthermostat 12 °C, zurück nach 11 s ✅
 - [x] **Zimmer 6:** Fenstersignal kam beim Wandthermostat nicht an → Verknüpfung per Skript neu angelegt (`zimmer6_fenster_neu_verknuepfen.hms`)
-- [ ] Zimmer 6: Taste am Fensterkontakt, dann Fenster-Test wiederholen
+- [x] Zimmer 6: Konfiguration auf Fensterkontakt und Wandthermostat übertragen (22:44)
+- [ ] Zimmer 6: Fenster-Test mit offenem Fenster (Soll muss auf 12 °C gehen)
 - [ ] Bad Gäste, Girls Bad: kein Fensterkontakt vorhanden (optional nachrüsten)
