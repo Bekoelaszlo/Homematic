@@ -128,5 +128,6 @@ Ersatz: **IEQ0078470** (HM-CC-VD). Prüfen mit `skripte/girlsbad_tausch_check.hm
 ## 11. Fenster-Absenkung (Test 11.10.2026, 22:35, `skripte/fenster_check.hms`)
 - [x] Zimmer 8: Fenster offen → Wandthermostat 12 °C ✅ (Problem von gestern behoben)
 - [x] Zimmer 5: Fenster offen → Heizkörperthermostat 12 °C, zurück nach 11 s ✅
-- [ ] **Zimmer 6:** Fenster seit 22:04 offen, Wandthermostat bleibt 24 °C, Ventil 36 % → Signal Fensterkontakt (MEQ1831714) kommt beim Wandthermostat (JEQ0121592:3) nicht an. Verknüpfung neu anlegen.
+- [x] **Zimmer 6:** Fenstersignal kam beim Wandthermostat nicht an → Verknüpfung per Skript neu angelegt (`zimmer6_fenster_neu_verknuepfen.hms`)
+- [ ] Zimmer 6: Taste am Fensterkontakt, dann Fenster-Test wiederholen
 - [ ] Bad Gäste, Girls Bad: kein Fensterkontakt vorhanden (optional nachrüsten)
