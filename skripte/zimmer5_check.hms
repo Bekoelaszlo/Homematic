@@ -1,0 +1,26 @@
+! Zimmer 5: Fensterkontakt, Heizkoerperthermostat, Wandthermostat - schaltet nichts.
+string e; string a; object dp; string m;
+WriteLine("--- Erreichbarkeit / Batterie");
+foreach(e, "NEQ1156915=Fensterkontakt\tLEQ1287076=Heizkoerperthermostat\tJEQ0457714=Wandthermostat") {
+  a = e.StrValueByIndex("=", 0);
+  m = e.StrValueByIndex("=", 1) # ": nicht erreichbar ";
+  dp = dom.GetObject("BidCos-RF." # a # ":0.UNREACH"); if (dp) { m = m # dp.Value(); }
+  dp = dom.GetObject("BidCos-RF." # a # ":0.LOWBAT"); if (dp) { m = m # ", Batterie leer " # dp.Value(); }
+  dp = dom.GetObject("BidCos-RF." # a # ":0.CONFIG_PENDING"); if (dp) { m = m # ", Konfig ausstehend " # dp.Value(); }
+  WriteLine(m);
+}
+WriteLine("--- Fensterkontakt");
+dp = dom.GetObject("BidCos-RF.NEQ1156915:1.STATE");
+if (dp) { WriteLine("offen: " # dp.Value() # "  (seit " # dp.Timestamp() # ")"); }
+WriteLine("--- Heizkoerperthermostat");
+dp = dom.GetObject("BidCos-RF.LEQ1287076:4.CONTROL_MODE");
+if (dp) { m = "?"; if (dp.Value() == 0) { m = "Auto"; } if (dp.Value() == 1) { m = "Manu"; } if (dp.Value() == 2) { m = "Party/Urlaub"; } if (dp.Value() == 3) { m = "Boost"; } WriteLine("Modus: " # m); }
+dp = dom.GetObject("BidCos-RF.LEQ1287076:4.SET_TEMPERATURE"); if (dp) { WriteLine("Solltemperatur: " # dp.Value().ToString(1) # "  (seit " # dp.Timestamp() # ")"); }
+dp = dom.GetObject("BidCos-RF.LEQ1287076:4.ACTUAL_TEMPERATURE"); if (dp) { WriteLine("Isttemperatur: " # dp.Value().ToString(1) # "  (zuletzt " # dp.Timestamp() # ")"); }
+dp = dom.GetObject("BidCos-RF.LEQ1287076:4.VALVE_STATE"); if (dp) { WriteLine("Ventil: " # dp.Value() # " %"); }
+dp = dom.GetObject("BidCos-RF.LEQ1287076:4.BATTERY_STATE"); if (dp) { WriteLine("Batteriespannung: " # dp.Value().ToString(1) # " V"); }
+dp = dom.GetObject("BidCos-RF.LEQ1287076:4.FAULT_REPORTING"); if (dp) { WriteLine("Fehlercode: " # dp.Value() # "  (0 = kein Fehler)"); }
+WriteLine("--- Wandthermostat (liefert die Raumtemperatur)");
+dp = dom.GetObject("BidCos-RF.JEQ0457714:1.TEMPERATURE"); if (dp) { WriteLine("Raumtemperatur: " # dp.Value().ToString(1) # "  (zuletzt " # dp.Timestamp() # ")"); }
+dp = dom.GetObject("BidCos-RF.JEQ0457714:1.HUMIDITY"); if (dp) { WriteLine("Luftfeuchte: " # dp.Value() # " %"); }
+dp = dom.GetObject("BidCos-RF.JEQ0457714:2.SETPOINT"); if (dp) { WriteLine("Sollwert am Wandthermostat (ohne Wirkung): " # dp.Value().ToString(1)); }
