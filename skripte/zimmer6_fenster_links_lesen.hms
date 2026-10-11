@@ -1,0 +1,5 @@
+! Zimmer 6: Verknuepfungen von Fensterkontakt und Wandthermostat direkt aus dem Funkdienst lesen - aendert nichts.
+string out; string err;
+system.Exec("echo 'load tclrpc.so; puts \"Fensterkontakt verknuepft mit: [xmlrpc http://127.0.0.1:2001/ getLinkPeers [list string MEQ1831714:1]]\"; puts \"Wandthermostat Fensterempfang verknuepft mit: [xmlrpc http://127.0.0.1:2001/ getLinkPeers [list string JEQ0121592:3]]\"' | tclsh", &out, &err);
+WriteLine(out);
+if (err != "") { WriteLine("FEHLER: " # err); }
