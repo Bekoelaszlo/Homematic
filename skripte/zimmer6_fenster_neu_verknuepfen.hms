@@ -4,9 +4,9 @@
 boolean ausfuehren = false;
 string out; string err; string cmd;
 cmd = "load tclrpc.so; ";
-cmd = cmd # "catch {xmlrpc http://127.0.0.1:2001/ removeLink [list string MEQ1831714:1] [list string JEQ0121592:3]} r1; puts \"removeLink: $r1\"; ";
-cmd = cmd # "catch {xmlrpc http://127.0.0.1:2001/ addLink [list string MEQ1831714:1] [list string JEQ0121592:3] [list string {Zimmer 6 Fenster}] [list string {Fensterkontakt an Wandthermostat}]} r2; puts \"addLink: $r2\"; ";
-cmd = cmd # "puts \"jetzt verknuepft mit: [xmlrpc http://127.0.0.1:2001/ getLinkPeers [list string MEQ1831714:1]]\"";
+cmd = cmd # "catch {xmlrpc http://127.0.0.1:2001/ removeLink [list string MEQ1831714:1] [list string JEQ0121592:3]} r1; puts [concat removeLink: $r1]; ";
+cmd = cmd # "catch {xmlrpc http://127.0.0.1:2001/ addLink [list string MEQ1831714:1] [list string JEQ0121592:3] [list string Zimmer6Fenster] [list string Fensterkontakt]} r2; puts [concat addLink: $r2]; ";
+cmd = cmd # "puts [concat jetzt-verknuepft-mit: [xmlrpc http://127.0.0.1:2001/ getLinkPeers [list string MEQ1831714:1]]]";
 if (ausfuehren) {
   system.Exec("echo '" # cmd # "' | tclsh", &out, &err);
   WriteLine(out);
