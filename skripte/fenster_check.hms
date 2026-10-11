@@ -1,0 +1,31 @@
+! Alle Raeume: Fenster offen? Hat die Heizung abgesenkt? - schaltet nichts.
+! Erwartung: Fenster offen -> Solltemperatur 12 Grad (Fenster-auf-Temperatur).
+! Format je Raum: Raum|Kontakt1,Kontakt2|Wandthermostat mit Ventil|Heizkoerperthermostat
+string r; string k; string k2; string tc; string rt; object dp; boolean offen; real soll; string s; integer i;
+foreach(r, "Flur|OEQ2242583|IEQ0444515|\tKueche|NEQ1156537,NEQ1156703||OEQ1257004\tReci|MEQ1484820|KEQ0011910|\tSolarium|MEQ1485013|KEQ0011850|\tWaschraum|MEQ1831716,OEQ2242125|KEQ0009984|\tZimmer 1|MEQ1405715|JEQ0457275|\tZimmer 2|NEQ1157166|JEQ0457264|\tZimmer 3|OEQ2246622||OEQ1257212\tZimmer 4|OEQ2245291|JEQ0121520|REQ0381230\tZimmer 5|NEQ1156915||LEQ1287076\tZimmer 6|MEQ1831714|JEQ0121592|\tZimmer 7|MEQ1831605||REQ0381224\tZimmer 8|OEQ2242120,NEQ1157132|KEQ0010505|") {
+  k = r.StrValueByIndex("|", 1);
+  tc = r.StrValueByIndex("|", 2);
+  rt = r.StrValueByIndex("|", 3);
+  offen = false;
+  s = r.StrValueByIndex("|", 0) # ": Fenster ";
+  i = 0;
+  while (i < 2) {
+    k2 = k.StrValueByIndex(",", i);
+    if (k2 != "") {
+      dp = dom.GetObject("BidCos-RF." # k2 # ":1.STATE");
+      if (dp) { if (dp.Value()) { offen = true; } }
+    }
+    i = i + 1;
+  }
+  if (offen) { s = s # "OFFEN"; } else { s = s # "zu"; }
+  if (tc != "") {
+    dp = dom.GetObject("BidCos-RF." # tc # ":2.SETPOINT");
+    if (dp) { soll = dp.Value(); s = s # " | Wandthermostat " # soll.ToString(1); if (offen && (soll > 12.5)) { s = s # " <-- NICHT ABGESENKT"; } }
+  }
+  if (rt != "") {
+    dp = dom.GetObject("BidCos-RF." # rt # ":4.SET_TEMPERATURE");
+    if (dp) { soll = dp.Value(); s = s # " | Heizkoerperthermostat " # soll.ToString(1); if (offen && (soll > 12.5)) { s = s # " <-- NICHT ABGESENKT"; } }
+  }
+  WriteLine(s);
+}
+WriteLine("Bad Gaeste, Girls Bad: kein Fensterkontakt vorhanden");
