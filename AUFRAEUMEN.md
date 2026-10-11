@@ -100,7 +100,7 @@ Die CCU funkt über zwei **HomeMatic RF-LAN-Gateways** (HM-LGW-O-TW-W-EU); das e
 
 | Gateway | Seriennummer | IP | Geräte |
 |---|---|---|---|
-| RF-LAN Gateway | KEQ1064927 | 192.168.2.61 | 32 – Zimmer 1–8, Zimmer 2 Rollo, Heizkörperthermostate Zimmer 3/4/5/7 |
+| RF-LAN Gateway | KEQ1064927 | 192.168.2.61 | 32 – Bad Gäste, Zimmer 1–8 (inkl. Heizkörperthermostate 3/4/5/7), Zimmer 2 Rollo |
 | RF-LAN Gateway 2 | MEQ0461078 | 192.168.2.62 | 23 – Flur, Girls Bad, Reci, Solarium, Waschraum, Küche, Rollos Reci/Solarium, Fernbedienung |
 
 Die 3 stummen Ventile: Zimmer 6 Ventil + Zimmer 8 Ventil 1 → Gateway 1; Girls Bad Ventil → Gateway 2.
