@@ -94,3 +94,15 @@ Nach dem Firmware-Update stehen die Servicemeldungen zunächst auf 0 – die Mel
 
 Neu seit 22:15:
 - [ ] Girls Bad Wandthermostat (KEQ0010690): **Batterie leer** (LOWBAT) → Batterien tauschen. Kann auch die Funkstörung zum Girls Bad Ventil erklären.
+
+## 8. Funk: zwei LAN-Gateways (keine Repeater)
+Die CCU funkt über zwei **HomeMatic RF-LAN-Gateways** (HM-LGW-O-TW-W-EU); das eingebaute Funkmodul der CCU ist keinem Gerät zugeordnet.
+
+| Gateway | Seriennummer | IP | Geräte |
+|---|---|---|---|
+| RF-LAN Gateway | KEQ1064927 | 192.168.2.61 | 32 – Zimmer 1–8, Zimmer 2 Rollo, Heizkörperthermostate Zimmer 3/4/5/7 |
+| RF-LAN Gateway 2 | MEQ0461078 | 192.168.2.62 | 23 – Flur, Girls Bad, Reci, Solarium, Waschraum, Küche, Rollos Reci/Solarium, Fernbedienung |
+
+Die 3 stummen Ventile: Zimmer 6 Ventil + Zimmer 8 Ventil 1 → Gateway 1; Girls Bad Ventil → Gateway 2.
+- [ ] Status beider Gateways prüfen (Einstellungen → Systemsteuerung → LAN Gateway Konfiguration)
+- [ ] Ggf. die 3 Ventile dem anderen Gateway zuordnen bzw. Roaming aktivieren
