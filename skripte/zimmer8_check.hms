@@ -14,7 +14,7 @@ if (dp) { WriteLine("Solltemperatur: " # dp.Value().ToString(1) # "  (seit " # d
 dp = dom.GetObject("BidCos-RF.KEQ0010505:1.TEMPERATURE");
 if (dp) { WriteLine("Raumtemperatur: " # dp.Value().ToString(1)); }
 WriteLine("--- Ventile (Oeffnung in %)");
-foreach(e, "IEQ0171850=Ventil 1\tKEQ0492688=Ventil 2\tJEQ0377716=Ventil 3") {
+foreach(e, "HEQ0238742=Ventil 1\tKEQ0492688=Ventil 2\tJEQ0377716=Ventil 3") {
   a = e.StrValueByIndex("=", 0);
   dp = dom.GetObject("BidCos-RF." # a # ":1.VALVE_STATE");
   ur = dom.GetObject("BidCos-RF." # a # ":0.UNREACH");
