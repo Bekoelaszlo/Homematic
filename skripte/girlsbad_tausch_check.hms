@@ -1,0 +1,16 @@
+! Girls Bad: neues Ventil (IEQ0078470) und altes Ventil (KEQ0012342) pruefen - schaltet nichts.
+string e; string a; object d; object dp; string s; string id;
+foreach(e, "IEQ0078470=NEUES Ventil\tKEQ0012342=ALTES Ventil") {
+  a = e.StrValueByIndex("=", 0);
+  s = e.StrValueByIndex("=", 1) # " (" # a # "): ";
+  d = null;
+  foreach(id, dom.GetObject(ID_DEVICES).EnumUsedIDs()) { if (dom.GetObject(id).Address() == a) { d = dom.GetObject(id); } }
+  if (d) {
+    s = s # "in der CCU als '" # d.Name() # "'";
+    if (!d.ReadyConfig()) { s = s # " - NOCH IM POSTEINGANG"; }
+    dp = dom.GetObject("BidCos-RF." # a # ":0.CONFIG_PENDING"); if (dp) { s = s # ", Konfig ausstehend: " # dp.Value(); }
+    dp = dom.GetObject("BidCos-RF." # a # ":0.UNREACH"); if (dp) { s = s # ", nicht erreichbar: " # dp.Value(); }
+    dp = dom.GetObject("BidCos-RF." # a # ":1.VALVE_STATE"); if (dp) { s = s # ", Ventil " # dp.Value() # " % (zuletzt " # dp.Timestamp() # ")"; }
+  } else { s = s # "nicht (mehr) in der CCU"; }
+  WriteLine(s);
+}

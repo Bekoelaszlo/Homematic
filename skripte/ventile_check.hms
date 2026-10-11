@@ -1,7 +1,7 @@
 ! Alle Ventilantriebe (HM-CC-VD): Oeffnung, letzte Meldung, erreichbar? - schaltet nichts.
 ! "zuletzt" muss nach dem Batterietausch liegen, sonst hat die CCU das Ventil seitdem nicht gehoert.
 string e; string a; object dp; object ur; string s;
-foreach(e, "KEQ0013553=Bad Gaeste\tKEQ0359933=Flur\tKEQ0012342=Girls Bad\tKEQ0013212=Reci\tJEQ0531543=Solarium\tJEQ0045993=Waschraum\tJEQ0458444=Zimmer 1\tJEQ0458454=Zimmer 2\tJEQ0458465=Zimmer 4\tJEQ0377802=Zimmer 6\tIEQ0171850=Zimmer 8 Ventil 1\tKEQ0492688=Zimmer 8 Ventil 2\tJEQ0377716=Zimmer 8 Ventil 3") {
+foreach(e, "KEQ0013553=Bad Gaeste\tKEQ0359933=Flur\tIEQ0078470=Girls Bad\tKEQ0013212=Reci\tJEQ0531543=Solarium\tJEQ0045993=Waschraum\tJEQ0458444=Zimmer 1\tJEQ0458454=Zimmer 2\tJEQ0458465=Zimmer 4\tJEQ0377802=Zimmer 6\tIEQ0171850=Zimmer 8 Ventil 1\tKEQ0492688=Zimmer 8 Ventil 2\tJEQ0377716=Zimmer 8 Ventil 3") {
   a = e.StrValueByIndex("=", 0);
   dp = dom.GetObject("BidCos-RF." # a # ":1.VALVE_STATE");
   ur = dom.GetObject("BidCos-RF." # a # ":0.UNREACH");
