@@ -110,8 +110,9 @@ Die 3 stummen Ventile: Zimmer 6 Ventil + Zimmer 8 Ventil 1 → Gateway 1; Girls 
 ## 9. Girls Bad Ventil tauschen
 Altes Ventil KEQ0012342: Notstellung 15 % mit Antennensymbol – keine Verbindung zum Wandthermostat trotz neuer Batterien und neuer Verknüpfung.
 Ersatz: **IEQ0078470** (HM-CC-VD). Prüfen mit `skripte/girlsbad_tausch_check.hms`.
-- [ ] Neues Ventil anlernen (nahe Gateway), Posteingang: Raum Girls Bad, Gewerk Heizung
-- [ ] Verknüpfung Girls Bad Wandthermostat Regler (KEQ0010690:2) → IEQ0078470:1, Konfiguration übertragen
-- [ ] Montieren, Anpassfahrt A1/A2/A3
-- [ ] Alte Verknüpfung + altes Gerät KEQ0012342 löschen, neues in „Girls Bad Ventil“ umbenennen
+- [x] Neues Ventil angelernt, heißt „Girls Bad Ventil“
+- [x] Konfiguration übertragen (CONFIG_PENDING false)
+- [x] Montiert
+- [ ] Erste Ventilmeldung abwarten (VALVE_STATE mit aktueller Uhrzeit)
+- [x] Altes Gerät KEQ0012342 aus der CCU entfernt
 - Danach ggf. Zimmer 6 Ventil (JEQ0377802) und Zimmer 8 Ventil 1 (IEQ0171850) genauso (beide zeigen 15 + Antennensymbol?)
