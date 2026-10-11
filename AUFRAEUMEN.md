@@ -113,6 +113,6 @@ Ersatz: **IEQ0078470** (HM-CC-VD). Prüfen mit `skripte/girlsbad_tausch_check.hm
 - [x] Neues Ventil angelernt, heißt „Girls Bad Ventil“
 - [x] Konfiguration übertragen (CONFIG_PENDING false)
 - [x] Montiert
-- [ ] Erste Ventilmeldung abwarten (VALVE_STATE mit aktueller Uhrzeit)
+- [x] Erste Ventilmeldung 20:24 – Girls Bad läuft wieder ✅
 - [x] Altes Gerät KEQ0012342 aus der CCU entfernt
 - Danach ggf. Zimmer 6 Ventil (JEQ0377802) und Zimmer 8 Ventil 1 (IEQ0171850) genauso (beide zeigen 15 + Antennensymbol?)
